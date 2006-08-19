@@ -4,7 +4,7 @@ Name:		fusesmb
 Version:	0.8.5
 Release:	1
 License:	GPL
-Group:		Base
+Group:		Applications/System
 Source0:	http://www.ricardis.tudelft.nl/~vincent/fusesmb/download/%{name}-%{version}.tar.gz
 # Source0-md5:	8b9268826b544ad124e016ced17d5310
 URL:		http://www.ricardis.tudelft.nl/~vincent/fusesmb/
@@ -44,7 +44,8 @@ tylko przy próbie dostêpu do udzia³u.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
