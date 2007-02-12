@@ -1,5 +1,5 @@
 Summary:	SMB for Fuse
-Summary(pl):	SMB dla Fuse
+Summary(pl.UTF-8):   SMB dla Fuse
 Name:		fusesmb
 Version:	0.8.5
 Release:	1
@@ -24,14 +24,14 @@ share at a time, you mount all workgroups, hosts and shares at once.
 Only when you're accessing a share a connection is made to the
 remote computer.
 
-%description -l pl
-Z pomoc± SMB dla Fuse mo¿na przegl±daæ otoczenie sieciowe, tak jakby
-by³o ono systemem plików.
+%description -l pl.UTF-8
+Z pomocÄ… SMB dla Fuse moÅ¼na przeglÄ…daÄ‡ otoczenie sieciowe, tak jakby
+byÅ‚o ono systemem plikÃ³w.
 
-W uproszczeniu, jest to smbmount z haczykiem. Zamiast montowaæ jeden
-udzia³ Samby, montuje siê wszystykie grupy robocze, komputery
-i udzia³y na raz. Po³±czenie do zdalnego komputera jest wykonywane
-tylko przy próbie dostêpu do udzia³u.
+W uproszczeniu, jest to smbmount z haczykiem. Zamiast montowaÄ‡ jeden
+udziaÅ‚ Samby, montuje siÄ™ wszystykie grupy robocze, komputery
+i udziaÅ‚y na raz. PoÅ‚Ä…czenie do zdalnego komputera jest wykonywane
+tylko przy prÃ³bie dostÄ™pu do udziaÅ‚u.
 
 %prep
 %setup -q
