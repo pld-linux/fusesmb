@@ -1,5 +1,5 @@
 Summary:	SMB for Fuse
-Summary(pl.UTF-8):   SMB dla Fuse
+Summary(pl.UTF-8):	SMB dla Fuse
 Name:		fusesmb
 Version:	0.8.5
 Release:	1
