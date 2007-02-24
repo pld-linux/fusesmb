@@ -1,12 +1,12 @@
 Summary:	SMB for Fuse
 Summary(pl.UTF-8):	SMB dla Fuse
 Name:		fusesmb
-Version:	0.8.5
+Version:	0.8.6
 Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	http://www.ricardis.tudelft.nl/~vincent/fusesmb/download/%{name}-%{version}.tar.gz
-# Source0-md5:	8b9268826b544ad124e016ced17d5310
+# Source0-md5:	91906f3a1c408474a4ffda4902d6a1b8
 URL:		http://www.ricardis.tudelft.nl/~vincent/fusesmb/
 BuildRequires:	libfuse-devel >= 2.3
 BuildRequires:	libsmbclient-devel >= 3.0
