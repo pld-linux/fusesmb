@@ -7,11 +7,10 @@ License:	GPL
 Group:		Applications/System
 Source0:	http://www.ricardis.tudelft.nl/~vincent/fusesmb/download/%{name}-%{version}.tar.gz
 # Source0-md5:	91906f3a1c408474a4ffda4902d6a1b8
+Patch0:		%{name}-no_clientchk.patch
 URL:		http://www.ricardis.tudelft.nl/~vincent/fusesmb/
 BuildRequires:	libfuse-devel >= 2.3
 BuildRequires:	libsmbclient-devel >= 3.0
-# needed by stupid configure check, anyone wants to write a patch?
-BuildRequires:	samba-client
 Requires:	samba-client
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -35,8 +34,12 @@ tylko przy próbie dostępu do udziału.
 
 %prep
 %setup -q
+%patch0 -p0
 
 %build
+%{__aclocal}
+%{__autoconf}
+%{__automake}
 %configure
 
 %{__make}
