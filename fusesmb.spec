@@ -9,6 +9,8 @@ Source0:	http://www.ricardis.tudelft.nl/~vincent/fusesmb/download/%{name}-%{vers
 # Source0-md5:	91906f3a1c408474a4ffda4902d6a1b8
 Patch0:		%{name}-no_clientchk.patch
 URL:		http://www.ricardis.tudelft.nl/~vincent/fusesmb/
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	libfuse-devel >= 2.3
 BuildRequires:	libsmbclient-devel >= 3.0
 Requires:	samba-client
