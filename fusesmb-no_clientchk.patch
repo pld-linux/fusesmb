@@ -1,0 +1,11 @@
+--- configure.in	2006-08-29 20:42:31.000000000 +0200
++++ configure.in-new	2007-08-28 18:00:27.614594563 +0200
+@@ -52,8 +52,6 @@
+ dnl Checks for programs.
+ AC_PROG_INSTALL
+ AC_PROG_CC
+-AC_CHECK_PROG(NMBLOOKUP,nmblookup,yes,no)
+-test $NMBLOOKUP = no && AC_MSG_ERROR([Please install nmblookup.])
+ 
+ dnl Checks for libraries.
+ 
