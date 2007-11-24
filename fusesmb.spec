@@ -2,12 +2,17 @@ Summary:	SMB for Fuse
 Summary(pl.UTF-8):	SMB dla Fuse
 Name:		fusesmb
 Version:	0.8.7
-Release:	1
+Release:	1.1
 License:	GPL
 Group:		Applications/System
 Source0:	http://www.ricardis.tudelft.nl/~vincent/fusesmb/download/%{name}-%{version}.tar.gz
 # Source0-md5:	ff5adc291b18fd452fe4694cbe45dabd
 Patch0:		%{name}-no_clientchk.patch
+Patch1:		%{name}-free_vg.patch
+Patch2:		%{name}-more_debug.patch
+Patch3:		%{name}-rewindir.patch
+Patch4:		%{name}-sv.patch
+Patch5:		%{name}-debug_write.patch
 URL:		http://www.ricardis.tudelft.nl/~vincent/fusesmb/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -37,6 +42,11 @@ tylko przy próbie dostępu do udziału.
 %prep
 %setup -q
 %patch0 -p0
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 %build
 %{__aclocal}
