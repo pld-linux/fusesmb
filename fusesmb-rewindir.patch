@@ -1,0 +1,23 @@
+
+# HG changeset patch
+# User Vincent Wagelaar <vincent@ricardis.tudelft.nl>
+# Date 1189308755 -7200
+# Node ID 43fc6b1b85482441810521998ddcc50775114c17
+# Parent 5532758d3763bd2803a67686ccba9a7475148bc3
+Fix problem with rewinddir on shares
+
+--- a/fusesmb.c	Sat Sep 08 17:39:23 2007 +0200
++++ b/fusesmb.c	Sun Sep 09 05:32:35 2007 +0200
+@@ -474,6 +474,11 @@ static int fusesmb_readdir(const char *p
+     else
+     {
+         pthread_mutex_lock(&ctx_mutex);
++        if (0 > ctx->lseekdir(ctx, (SMBCFILE *)fi->fh, 0))
++        {
++            pthread_mutex_unlock(&ctx_mutex);
++            return -errno;
++        }
+         while (NULL != (pdirent = ctx->readdir(ctx, (SMBCFILE *)fi->fh)))
+         {
+             if (pdirent->smbc_type == SMBC_DIR)
+

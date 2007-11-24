@@ -1,0 +1,19 @@
+
+# HG changeset patch
+# User Vincent Wagelaar <vincent@ricardis.tudelft.nl>
+# Date 1189265963 -7200
+# Node ID 5532758d3763bd2803a67686ccba9a7475148bc3
+# Parent 2ac3b0b1df1d13338544e26ff60473ccce75b803
+Add debug for write
+
+--- a/fusesmb.c	Fri Sep 07 02:26:00 2007 +0200
++++ b/fusesmb.c	Sat Sep 08 17:39:23 2007 +0200
+@@ -628,6 +628,7 @@ static int fusesmb_write(const char *pat
+     char smb_path[MY_MAXPATHLEN] = "smb:/";
+ 
+     strcat(smb_path, stripworkgroup(path));
++    debug("%s: size: %zd; offset: %lld", path, size, offset);
+ 
+     int tries = 0;              //For number of retries before failing
+     ssize_t ssize;              //Returned by ctx->read
+

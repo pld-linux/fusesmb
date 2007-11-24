@@ -1,0 +1,28 @@
+
+# HG changeset patch
+# User Vincent Wagelaar <vincent@ricardis.tudelft.nl>
+# Date 1195498868 -3600
+# Node ID 36cbf3b25cb6712e00b517c0ee98177096ddf83e
+# Parent 00de6cb760f4a5e292148c7c5522536fc0c48b54
+sv is uninitialized fix by Evgeniy Dushistov
+
+--- a/smbctx.c	Tue Sep 18 21:59:31 2007 +0200
++++ b/smbctx.c	Mon Nov 19 20:01:08 2007 +0100
+@@ -29,6 +29,7 @@ static int nmblookup(const char *ip_serv
+ static int nmblookup(const char *ip_server, char *output, size_t outputsize)
+ {
+     char ipcmd[1024] = "nmblookup -A ";
++    *output = '\0';
+     strcat(ipcmd, ip_server);
+     FILE *pipe = popen(ipcmd, "r");
+     if (NULL == pipe)
+@@ -174,7 +175,7 @@ static void fusesmb_cache_auth_fn(const 
+ {
+     (void)workgroup;
+     (void)wgmaxlen;
+-    char sv[1024];
++    char sv[1024] = "";
+ 
+     /* Don't authenticate for workgroup listing */
+     if (NULL == server || server[0] == '\0')
+

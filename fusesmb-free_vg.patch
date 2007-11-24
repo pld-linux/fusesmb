@@ -1,0 +1,48 @@
+
+# HG changeset patch
+# User Vincent Wagelaar <vincent@ricardis.tudelft.nl>
+# Date 1195499691 -3600
+# Node ID bfe5900f95a82b60a488a75d73451e3130c8b9c5
+# Parent 36cbf3b25cb6712e00b517c0ee98177096ddf83e
+Free wg when context init fails patch by Evgeniy Dushistov
+
+--- a/cache.c	Mon Nov 19 20:01:08 2007 +0100
++++ b/cache.c	Mon Nov 19 20:14:51 2007 +0100
+@@ -286,13 +286,14 @@ static void *workgroup_listing_thread(vo
+ 
+     hash_t *ip_cache = hash_create(HASHCOUNT_T_MAX, NULL, NULL);
+     if (NULL == ip_cache)
+-        return NULL;
+-
++    {
++        goto out;
++    }
+     stringlist_t *servers = sl_init();
+     if (NULL == servers)
+     {
+         fprintf(stderr, "Malloc failed\n");
+-        return NULL;
++        goto out;
+     }
+     SMBCCTX *ctx = fusesmb_cache_new_context(&cfg);
+     SMBCFILE *dir;
+@@ -377,7 +378,9 @@ use_popen:
+     hash_destroy(ip_cache);
+     sl_free(servers);
+     smbc_free_context(ctx, 1);
+-    return 0;
++out:
++    free(wg);
++    return NULL;
+ }
+ 
+ 
+@@ -552,6 +555,7 @@ int main(int argc, char *argv[])
+     cache_servers(ctx);
+     smbc_free_context(ctx, 1);
+     options_free(&opts);
++    config_free(&cfg);
+     if (argc == 1)
+     {
+         unlink(pidfile);
+
