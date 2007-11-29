@@ -1,8 +1,11 @@
+#
+%bcond_with	debug
+
 Summary:	SMB for Fuse
 Summary(pl.UTF-8):	SMB dla Fuse
 Name:		fusesmb
 Version:	0.8.7
-Release:	1.1
+Release:	1.2
 License:	GPL
 Group:		Applications/System
 Source0:	http://www.ricardis.tudelft.nl/~vincent/fusesmb/download/%{name}-%{version}.tar.gz
@@ -52,7 +55,8 @@ tylko przy próbie dostępu do udziału.
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-%configure
+%configure \
+	%{?with_debug:--with-debug}
 
 %{__make}
 
